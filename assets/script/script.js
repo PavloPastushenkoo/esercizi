@@ -226,7 +226,8 @@ const movies = [
     Type: "movie",
     Poster:
       "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
-  },
+      trailer: "ciao",
+    },
 ];
 
 /* ESERCIZIO 9 (forEach)
@@ -236,13 +237,13 @@ const movies = [
 /* ESERCIZIO 10
     Scrivi una funzione per ottenere il numero di film contenuti nell'array fornito.
   */
-    function quantiFilm(movies){
-    return movies.length;
-    }
+function quantiFilm(movies) {
+  return movies.length;
+}
 
-    const numeroFilm = quantiFilm(movies);
+const numeroFilm = quantiFilm(movies);
 
-    console.log("Il numero dei film forniti nel array è: " + numeroFilm);
+console.log("Il numero dei film forniti nel array è: " + numeroFilm);
 /* ESERCIZIO 11 (map)
     Scrivi una funzione per creare un array con solamente i titoli dei film contenuti nell'array fornito.
   */
@@ -258,6 +259,23 @@ const movies = [
 /* ESERCIZIO 14 (find)
     Scrivi una funzione per ottenere dall'array fornito uno specifico film (la funzione riceve un imdbID come parametro).
   */
+ const elenco = document.getElementById("elenco");
+
+ movies.forEach(element => {
+    let option = document.createElement("option");
+    option.setAttribute("value", element.imdbID);
+    option.innerText = element.Title;
+    elenco.appendChild(option);
+ });
+
+ document.getElementById("scegli").addEventListener("click", function(){
+    let imdbID = elenco.value;
+        const filmScelto = movies.find((element) =>{
+            return element.imdbID === imdbID;
+        });
+        console.log(filmScelto);
+ })
+
 
 /* ESERCIZIO 15 (findIndex)
     Scrivi una funzione per ottenere dall'array fornito l'indice del primo film uscito nell'anno fornito come parametro.
